@@ -11,7 +11,7 @@ public class LoansController {
      * Welcome message
      * @return String
      */
-    @GetMapping("/loans")
+    @GetMapping("/myLoans")
     public String getLoansDetail(){
         return "Here are the account details from the DB";
     }
