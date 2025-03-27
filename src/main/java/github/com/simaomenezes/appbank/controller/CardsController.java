@@ -11,7 +11,7 @@ public class CardsController {
      * Welcome message
      * @return String
      */
-    @GetMapping("/cards")
+    @GetMapping("/myCards")
     public String getCardsDetail(){
         return "Here are the account details from the DB";
     }
