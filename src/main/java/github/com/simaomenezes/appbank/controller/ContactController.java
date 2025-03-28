@@ -13,6 +13,6 @@ public class ContactController {
      */
     @GetMapping("/contact")
     public String getContactDetail(){
-        return "Here are the account details from the DB";
+        return "Here are the Contact details from the DB";
     }
 }

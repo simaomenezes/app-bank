@@ -13,6 +13,6 @@ public class CardsController {
      */
     @GetMapping("/myCards")
     public String getCardsDetail(){
-        return "Here are the account details from the DB";
+        return "Here are the Cards details from the DB";
     }
 }

@@ -13,6 +13,6 @@ public class NoticesController {
      */
     @GetMapping("/notices")
     public String getNoticesDetail(){
-        return "Here are the account details from the DB";
+        return "Here are the Notices details from the DB";
     }
 }

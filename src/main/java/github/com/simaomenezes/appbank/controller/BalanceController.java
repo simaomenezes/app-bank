@@ -13,7 +13,7 @@ public class BalanceController {
      */
     @GetMapping("/myBalance")
     public String getBalanceDetail(){
-        return "Here are the account details from the DB";
+        return "Here are the Balance details from the DB";
     }
 
 
