@@ -24,9 +24,11 @@ public class ProjectSecurityConfig {
         // http.authorizeHttpRequests((requests) -> requests.anyRequest().authenticated());
         // http.authorizeHttpRequests((requests) -> requests.anyRequest().permitAll());
         // http.authorizeHttpRequests((requests) -> requests.anyRequest().denyAll());
+
+        /*
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/myAccount","myBalance","myLoans","myCards").authenticated()
-                .requestMatchers("/notices","/contact","error").permitAll());
+                .requestMatchers("/notices","/contact","error","/register").permitAll());
 
         // http.formLogin(flc->flc.disable());
         // http.httpBasic(hbc->hbc.disable());
@@ -34,18 +36,37 @@ public class ProjectSecurityConfig {
         http.formLogin(withDefaults());
         http.httpBasic(withDefaults());
         return http.build();
+        */
+
+        http.csrf(csrfConfig -> csrfConfig.disable())
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards").authenticated()
+                        .requestMatchers("/notices", "/contact", "/error", "/register").permitAll());
+        http.formLogin(withDefaults());
+        http.httpBasic(withDefaults());
+        return http.build();
     }
 
+    /*
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withUsername("user").password("{noop}123").authorities("read").build();
         UserDetails admin = User.withUsername("admin").password("{noop}321").authorities("admin").build();
         return new InMemoryUserDetailsManager(user, admin);
     }
+    */
+
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
+
+    /**
+     * From Spring Security 6.3 version
+     *
+     */
     @Bean
     public CompromisedPasswordChecker compromisedPasswordChecker(){
         return new HaveIBeenPwnedRestApiPasswordChecker();
