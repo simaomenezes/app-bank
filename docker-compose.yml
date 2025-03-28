@@ -14,7 +14,7 @@ services:
       - microservices-net
     restart: unless-stopped
   pgadmin:
-    container_name: ms_pgadmin
+    container_name: ms_pgadmin_2
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
