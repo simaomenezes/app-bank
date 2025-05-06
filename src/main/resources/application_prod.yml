@@ -50,6 +50,6 @@ logging:
 server:
   servlet:
     session:
-      timeout: ${SESSION_TIMEOUT:10m}
+      timeout: ${SESSION_TIMEOUT:2m}
 
 
