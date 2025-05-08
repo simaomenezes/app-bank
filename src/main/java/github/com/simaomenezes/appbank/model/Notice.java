@@ -1,10 +1,7 @@
 package github.com.simaomenezes.appbank.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +13,8 @@ import java.util.Date;
 public class Notice {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "notice_details_seq_gen")
+    @SequenceGenerator(name = "notice_details_seq_gen", sequenceName = "notice_details_id_seq")
     @Column(name = "notice_id")
     private long noticeId;
 

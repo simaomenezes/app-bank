@@ -1,9 +1,6 @@
 package github.com.simaomenezes.appbank.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +12,8 @@ import java.util.Date;
 public class Cards {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cards_seq_gen")
+    @SequenceGenerator(name = "cards_seq_gen", sequenceName = "cards_id_seq")
     @Column(name = "card_id")
     private long cardId;
 

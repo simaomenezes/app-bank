@@ -14,7 +14,6 @@ public class Accounts {
     @Id
     @Column(name = "account_number")
     private long accountNumber;
-
     @Column(name = "customer_id")
     private long customerId;
 

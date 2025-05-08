@@ -1,9 +1,6 @@
 package github.com.simaomenezes.appbank.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +12,8 @@ import java.util.Date;
 public class Contact {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_messages_seq_gen")
+    @SequenceGenerator(name = "contact_messages_seq_gen", sequenceName = "contact_messages_id_seq")
     @Column(name = "contact_id")
     private String contactId;
 
