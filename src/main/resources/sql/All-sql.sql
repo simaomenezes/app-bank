@@ -24,3 +24,5 @@ INSERT INTO notice_details (notice_id, notice_summary, notice_details, notic_beg
 VALUES (6,'COVID-19 Insurance', 'EazyBank launched an insurance policy which will cover COVID-19 expenses. Please reach out to the branch for more details',
 NOW() - INTERVAL '30 DAY', NOW() + INTERVAL '30 DAY', NOW(), null);
 
+
+
