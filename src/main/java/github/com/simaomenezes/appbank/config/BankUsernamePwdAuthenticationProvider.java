@@ -21,8 +21,8 @@ public class BankUsernamePwdAuthenticationProvider implements AuthenticationProv
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String name = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        UserDetails userDetail = bankUserDetailsService.loadUserByUsername(name);
-        return new UsernamePasswordAuthenticationToken(userDetail, pwd, userDetail.getAuthorities());
+        UserDetails userDetails = bankUserDetailsService.loadUserByUsername(name);
+        return new UsernamePasswordAuthenticationToken(userDetails, pwd, userDetails.getAuthorities());
     }
 
     @Override
