@@ -23,9 +23,10 @@ public class BankProdUsernamePwdAuthenticationProvider implements Authentication
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String name = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        UserDetails userDetail = userDetailsService.loadUserByUsername(name);
-        if (passwordEncoder.matches(pwd, userDetail.getPassword())) {
-            return new UsernamePasswordAuthenticationToken(userDetail, pwd, userDetail.getAuthorities());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(name);
+        if (passwordEncoder.matches(pwd, userDetails.getPassword())) {
+            // Fetch Age details and perform validation to check if age >18
+            return new UsernamePasswordAuthenticationToken(userDetails, pwd, userDetails.getAuthorities());
         } else {
             throw new BadCredentialsException("Invalid password!");
         }
