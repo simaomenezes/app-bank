@@ -2,7 +2,10 @@ package github.com.simaomenezes.appbank.config;
 
 import github.com.simaomenezes.appbank.exceptionhandling.CustomAccessDeniedHandler;
 import github.com.simaomenezes.appbank.exceptionhandling.CustomBasicAuthenticationEntryPoint;
+import github.com.simaomenezes.appbank.filter.AuthoritiesLoggingAfterFilter;
+import github.com.simaomenezes.appbank.filter.AuthoritiesLoggingAtFilter;
 import github.com.simaomenezes.appbank.filter.CsrfCookieFilter;
+import github.com.simaomenezes.appbank.filter.RequestValidationBeforeFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,6 +52,9 @@ public class ProjectSecurityConfig {
                         .ignoringRequestMatchers("/contact", "/register")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
+                .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
+                .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
+                .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
                 .requiresChannel(rcc -> rcc.anyRequest().requiresInsecure()) // Only HTTP
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/myAccount").hasRole("USER")
